@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapdemo</title>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCxYtWbl3CDeooWjM3hAtjAz7l_XThmXnQ",
+        authDomain: "datademo-2a85f.firebaseapp.com",
+        databaseURL: "https://datademo-2a85f.firebaseio.com",
+        projectId: "datademo-2a85f",
+        storageBucket: "datademo-2a85f.appspot.com",
+        messagingSenderId: "375419472719"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.6.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <!-- <script defer src="/__/firebase/4.6.1/firebase-auth.js"></script> -->
+    <script defer src="/__/firebase/4.6.1/firebase-database.js"></script>
+    <!-- <script defer src="/__/firebase/4.6.1/firebase-messaging.js"></script> -->
+    <!-- <script defer src="/__/firebase/4.6.1/firebase-storage.js"></script> -->
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <script>
+      var database = firebase.database();
+
+      function writeUserData(userId, name, email, imageUrl) {
+        firebase.database().ref('users/' + userId).set({
+          username: name,
+          email: email,
+          profile_picture : imageUrl
+        });
+        return false
+      }
+    </script>
+
+  </head>
+  <body>
+    <h3>Mapdemo</h3>
+    <div id="map"></div>
+
+    <form onsubmit="return writeUserData('asd', 'asd', 'asd', 'asd');
+">
+      Name:<br>
+      <input type="text" id="name"><br>
+      Lat:<br>
+      <input type="text" id="lat"><br>
+      Long:<br>
+      <input type="text" id="long"><br>
+      <input type="submit" value="Submit">
+    </form>
+
+
+  </body>
+</html>
